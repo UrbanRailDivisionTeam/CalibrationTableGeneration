@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自动校线表生成软件</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 24px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+        }
+        h2 {
+            color: #212121;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+        label {
+            display: block;
+            margin: 16px 0 8px;
+            color: #757575;
+            font-size: 14px;
+        }
+        input[type="file"], input[type="text"], input[type="submit"] {
+            margin: 8px 0;
+            padding: 12px;
+            width: calc(100% - 24px);
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #6200ea;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #3700b3;
+        }
+        .error {
+            color: #d32f2f;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>自动校线表生成软件</h2>
+        <form method="post" enctype="multipart/form-data">
+            <label for="file">选择 Excel 文件:</label>
+            <input type="file" name="file" id="file" accept=".xls,.xlsx" required>
+            
+            <label for="mvb_condition">输入 MVB 线型:</label>
+            <input type="text" name="mvb_condition" id="mvb_condition" required>
+            
+            <input type="submit" value="提交">
+        </form>
+        
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
